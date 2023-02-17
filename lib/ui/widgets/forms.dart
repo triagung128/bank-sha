@@ -35,8 +35,11 @@ class CustomFormField extends StatelessWidget {
             hintText: !isShowTitle ? title : null,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
+              borderSide: isShowTitle ? const BorderSide() : BorderSide.none,
             ),
             contentPadding: const EdgeInsets.all(12),
+            filled: isShowTitle ? false : true,
+            fillColor: !isShowTitle ? whiteColor : null,
           ),
         ),
       ],
