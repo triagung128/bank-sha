@@ -14,6 +14,7 @@ dependencies:
   carousel_slider: ^4.2.1
   url_launcher: ^6.1.9
   intl: ^0.18.0
+  another_flushbar: ^1.12.29
 
 dev_dependencies:
   flutter_test:
