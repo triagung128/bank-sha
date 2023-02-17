@@ -38,30 +38,28 @@ class DataPackagePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          Center(
-            child: Wrap(
-              spacing: 17,
-              runSpacing: 17,
-              children: const [
-                PackageItem(
-                  amount: 10,
-                  price: 218000,
-                ),
-                PackageItem(
-                  amount: 25,
-                  price: 420000,
-                  isSelected: true,
-                ),
-                PackageItem(
-                  amount: 40,
-                  price: 500000,
-                ),
-                PackageItem(
-                  amount: 99,
-                  price: 700000,
-                ),
-              ],
-            ),
+          Wrap(
+            spacing: 17,
+            runSpacing: 17,
+            children: const [
+              PackageItem(
+                amount: 10,
+                price: 218000,
+              ),
+              PackageItem(
+                amount: 25,
+                price: 420000,
+                isSelected: true,
+              ),
+              PackageItem(
+                amount: 40,
+                price: 500000,
+              ),
+              PackageItem(
+                amount: 99,
+                price: 700000,
+              ),
+            ],
           ),
           const SizedBox(height: 85),
           CustomFilledButton(

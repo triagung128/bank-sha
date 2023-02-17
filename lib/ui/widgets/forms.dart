@@ -31,11 +31,21 @@ class CustomFormField extends StatelessWidget {
         TextFormField(
           controller: controller,
           obscureText: obscureText,
+          cursorColor: blackColor,
+          style: blackTextStyle.copyWith(
+            fontSize: 14,
+            fontWeight: medium,
+          ),
           decoration: InputDecoration(
             hintText: !isShowTitle ? title : null,
+            hintStyle: greyTextStyle.copyWith(fontSize: 14),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: isShowTitle ? const BorderSide() : BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(14),
+              borderSide: BorderSide(color: borderColor),
             ),
             contentPadding: const EdgeInsets.all(12),
             filled: isShowTitle ? false : true,

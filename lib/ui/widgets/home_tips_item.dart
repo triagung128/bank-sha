@@ -23,7 +23,8 @@ class HomeTipsItem extends StatelessWidget {
         }
       },
       child: Container(
-        width: 155,
+        // width: 155,
+        width: MediaQuery.of(context).size.width / 2 - ((17 / 2) + 24),
         height: 176,
         decoration: BoxDecoration(
           color: whiteColor,
@@ -37,7 +38,7 @@ class HomeTipsItem extends StatelessWidget {
               ),
               child: Image.asset(
                 imageUrl,
-                width: 155,
+                width: MediaQuery.of(context).size.width / 2 - ((17 / 2) + 24),
                 height: 110,
                 fit: BoxFit.cover,
               ),

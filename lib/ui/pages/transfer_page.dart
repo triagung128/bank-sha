@@ -93,25 +93,23 @@ class TransferPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          Center(
-            child: Wrap(
-              spacing: 17,
-              runSpacing: 17,
-              children: const [
-                TransferResultUserItem(
-                  imageUrl: 'assets/img_friend1.png',
-                  name: 'Yonna Jie',
-                  username: 'yoenna',
-                  isVerified: true,
-                ),
-                TransferResultUserItem(
-                  imageUrl: 'assets/img_friend2.png',
-                  name: 'Yonna Jie',
-                  username: 'yoenna',
-                  isSelected: true,
-                ),
-              ],
-            ),
+          Wrap(
+            spacing: 17,
+            runSpacing: 17,
+            children: const [
+              TransferResultUserItem(
+                imageUrl: 'assets/img_friend1.png',
+                name: 'Yonna Jie',
+                username: 'yoenna',
+                isVerified: true,
+              ),
+              TransferResultUserItem(
+                imageUrl: 'assets/img_friend2.png',
+                name: 'Yonna Jie',
+                username: 'yoenna',
+                isSelected: true,
+              ),
+            ],
           ),
         ],
       ),

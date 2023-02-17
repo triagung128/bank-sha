@@ -20,7 +20,8 @@ class TransferResultUserItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 155,
+      // width: 155,
+      width: MediaQuery.of(context).size.width / 2 - ((17 / 2) + 24),
       height: 175,
       padding: const EdgeInsets.symmetric(
         horizontal: 14,

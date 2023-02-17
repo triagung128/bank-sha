@@ -480,7 +480,7 @@ class MoreDialog extends StatelessWidget {
                   iconUrl: 'assets/ic_product_data.png',
                   title: 'Data',
                   onTap: () {
-                    Navigator.pushNamed(context, '/data-provider');
+                    Navigator.popAndPushNamed(context, '/data-provider');
                   },
                 ),
                 HomeServiceItem(
