@@ -13,6 +13,7 @@ dependencies:
   google_fonts: ^4.0.3
   carousel_slider: ^4.2.1
   url_launcher: ^6.1.9
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
