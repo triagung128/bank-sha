@@ -15,6 +15,11 @@ dependencies:
   url_launcher: ^6.1.9
   intl: ^0.18.0
   another_flushbar: ^1.12.29
+  http: ^0.13.5
+  flutter_bloc: ^8.1.2
+  equatable: ^2.0.5
+  image_picker: ^0.8.6+2
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:
