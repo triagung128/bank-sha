@@ -14,7 +14,6 @@ import 'package:bank_sha/ui/pages/sign_in_page.dart';
 import 'package:bank_sha/ui/pages/sign_up_page.dart';
 import 'package:bank_sha/ui/pages/sign_up_success_page.dart';
 import 'package:bank_sha/ui/pages/splash_page.dart';
-import 'package:bank_sha/ui/pages/topup_amount_page.dart';
 import 'package:bank_sha/ui/pages/topup_page.dart';
 import 'package:bank_sha/ui/pages/topup_success_page.dart';
 import 'package:bank_sha/ui/pages/transfer_amount_page.dart';
@@ -64,7 +63,6 @@ class MyApp extends StatelessWidget {
           '/profile-edit-pin': (_) => const ProfileEditPinPage(),
           '/profile-edit-success': (_) => const ProfileEditSuccessPage(),
           '/topup': (_) => const TopupPage(),
-          '/topup-amount': (_) => const TopupAmountPage(),
           '/topup-success': (_) => const TopupSuccessPage(),
           '/transfer': (_) => const TransferPage(),
           '/transfer-amount': (_) => const TransferAmountPage(),
