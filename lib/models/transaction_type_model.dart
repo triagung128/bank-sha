@@ -19,6 +19,6 @@ class TransactionTypeModel {
         name: json['name'],
         code: json['code'],
         action: json['action'],
-        thumbnail: json['thumbnail'].substring(30, 74),
+        thumbnail: json['thumbnail'],
       );
 }

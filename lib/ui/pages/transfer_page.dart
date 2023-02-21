@@ -141,6 +141,7 @@ class _TransferPageState extends State<TransferPage> {
 
   Widget buildResult() {
     return Container(
+      height: MediaQuery.of(context).size.height,
       margin: const EdgeInsets.only(top: 40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,25 +157,51 @@ class _TransferPageState extends State<TransferPage> {
           BlocBuilder<UserBloc, UserState>(
             builder: (context, state) {
               if (state is UserSuccess) {
-                return Wrap(
-                  spacing: 17,
-                  runSpacing: 17,
-                  children: state.users
-                      .map(
-                        (user) => GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedUser = user;
-                            });
-                          },
-                          child: TransferResultUserItem(
-                            user: user,
-                            isSelected: user.id == selectedUser?.id,
-                          ),
+                return Expanded(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 17,
+                      crossAxisSpacing: 17,
+                    ),
+                    itemBuilder: (context, index) {
+                      final user = state.users[index];
+
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedUser = user;
+                          });
+                        },
+                        child: TransferResultUserItem(
+                          user: user,
+                          isSelected: user.id == selectedUser?.id,
                         ),
-                      )
-                      .toList(),
+                      );
+                    },
+                    itemCount: state.users.length,
+                  ),
                 );
+                // return Wrap(
+                //   spacing: 17,
+                //   runSpacing: 17,
+                //   children: state.users
+                //       .map(
+                //         (user) => GestureDetector(
+                //           onTap: () {
+                //             setState(() {
+                //               selectedUser = user;
+                //             });
+                //           },
+                //           child: TransferResultUserItem(
+                //             user: user,
+                //             isSelected: user.id == selectedUser?.id,
+                //           ),
+                //         ),
+                //       )
+                //       .toList(),
+                // );
               }
 
               return const Center(

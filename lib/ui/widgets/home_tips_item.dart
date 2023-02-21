@@ -15,9 +15,18 @@ class HomeTipsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        if (await canLaunchUrl(Uri.parse(tip.url.toString()))) {
-          launchUrl(Uri.parse(tip.url.toString()));
+        final url = Uri.parse(tip.url.toString());
+        if (await canLaunchUrl(url)) {
+          await launchUrl(
+            Uri.parse(tip.url.toString()),
+          );
+        } else {
+          throw "Can't launch link url";
         }
+
+        // if (await canLaunchUrl(Uri.parse(tip.url.toString()))) {
+        //   await launchUrl(Uri.parse(tip.url.toString()));
+        // }
       },
       child: Container(
         // width: 155,

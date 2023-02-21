@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      state.user.username.toString(),
+                      state.user.name.toString(),
                       style: blackTextStyle.copyWith(
                         fontSize: 20,
                         fontWeight: semiBold,
@@ -328,36 +328,45 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildLatestTransactions() {
-    return Container(
-      margin: const EdgeInsets.only(top: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Latest Transactions',
-            style: blackTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: semiBold,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(
-              top: 22,
-              right: 22,
-              left: 22,
-              bottom: 4,
-            ),
-            margin: const EdgeInsets.only(top: 14),
-            decoration: BoxDecoration(
-              color: whiteColor,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: BlocProvider(
-              create: (context) => TransactionBloc()..add(TransactionGet()),
-              child: BlocBuilder<TransactionBloc, TransactionState>(
-                builder: (context, state) {
-                  if (state is TransactionSuccess) {
-                    return Column(
+    return BlocProvider(
+      create: (context) => TransactionBloc()..add(TransactionGet()),
+      child: BlocBuilder<TransactionBloc, TransactionState>(
+        builder: (context, state) {
+          if (state is TransactionLoading) {
+            return Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+
+          if (state is TransactionSuccess && state.transactions.isNotEmpty) {
+            return Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Latest Transactions',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 22,
+                      right: 22,
+                      left: 22,
+                      bottom: 4,
+                    ),
+                    margin: const EdgeInsets.only(top: 14),
+                    decoration: BoxDecoration(
+                      color: whiteColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
                       children: state.transactions
                           .map(
                             (transaction) => HomeLatestTransactionItem(
@@ -365,41 +374,48 @@ class HomePage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                    );
-                  }
-
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ),
-        ],
+            );
+          }
+
+          return Container();
+        },
       ),
     );
   }
 
   Widget buildSendAgain() {
-    return Container(
-      margin: const EdgeInsets.only(top: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Send Again',
-            style: blackTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: semiBold,
-            ),
-          ),
-          const SizedBox(height: 14),
-          BlocProvider(
-            create: (context) => UserBloc()..add(UserGetRecent()),
-            child: BlocBuilder<UserBloc, UserState>(
-              builder: (context, state) {
-                if (state is UserSuccess) {
-                  return SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => UserBloc()..add(UserGetRecent()),
+      child: BlocBuilder<UserBloc, UserState>(
+        builder: (context, state) {
+          if (state is UserLoading) {
+            return Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+
+          if (state is UserSuccess && state.users.isNotEmpty) {
+            return Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Send Again',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: state.users
@@ -422,16 +438,14 @@ class HomePage extends StatelessWidget {
                           )
                           .toList(),
                     ),
-                  );
-                }
+                  ),
+                ],
+              ),
+            );
+          }
 
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            ),
-          ),
-        ],
+          return Container();
+        },
       ),
     );
   }

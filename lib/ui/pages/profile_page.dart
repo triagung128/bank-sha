@@ -2,6 +2,7 @@ import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/shared/shared_methods.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/pages/profile_edit_page.dart';
+import 'package:bank_sha/ui/pages/profile_edit_pin_page.dart';
 import 'package:bank_sha/ui/widgets/buttons.dart';
 import 'package:bank_sha/ui/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
@@ -125,7 +126,7 @@ class ProfilePage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) =>
-                                      ProfileEditPage(user: state.user),
+                                      ProfileEditPinPage(user: state.user),
                                 ),
                               );
                             }

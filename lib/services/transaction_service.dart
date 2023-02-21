@@ -83,7 +83,6 @@ class TransactionService {
       );
 
       if (res.statusCode == 200) {
-        // print(jsonDecode(res.body)['data']['transaction_type']['thumbnail']);
         return List<TransactionModel>.from(
           jsonDecode(res.body)['data'].map(
             (transaction) => TransactionModel.fromJson(transaction),

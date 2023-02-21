@@ -78,6 +78,7 @@ class _DataPackagePageState extends State<DataPackagePage> {
                   title: '+628',
                   isShowTitle: false,
                   controller: phoneController,
+                  keyboardType: TextInputType.phone,
                 ),
                 const SizedBox(height: 40),
                 Text(
