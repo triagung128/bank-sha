@@ -1,4 +1,4 @@
-package com.example.bank_sha
+package com.triagung.walletapp
 
 import io.flutter.embedding.android.FlutterActivity
 
