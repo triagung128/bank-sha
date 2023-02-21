@@ -9,10 +9,9 @@ class PaymentMethodService {
   Future<List<PaymentMethodModel>> getPaymentMethods() async {
     try {
       final token = await AuthService().getToken();
+
       final res = await http.get(
-        Uri.parse(
-          '$baseUrl/payment_methods',
-        ),
+        Uri.parse('$baseUrl/payment_methods'),
         headers: {
           'Authorization': token,
         },

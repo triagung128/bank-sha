@@ -1,4 +1,5 @@
 import 'package:bank_sha/blocs/auth/auth_bloc.dart';
+import 'package:bank_sha/models/user_model.dart';
 import 'package:bank_sha/shared/shared_methods.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/widgets/buttons.dart';
@@ -7,7 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileEditPinPage extends StatefulWidget {
-  const ProfileEditPinPage({super.key});
+  final UserModel user;
+
+  const ProfileEditPinPage({
+    super.key,
+    required this.user,
+  });
 
   @override
   State<ProfileEditPinPage> createState() => _ProfileEditPinPageState();
@@ -73,6 +79,7 @@ class _ProfileEditPinPageState extends State<ProfileEditPinPage> {
                       onPressed: () {
                         context.read<AuthBloc>().add(
                               AuthUpdatePin(
+                                widget.user,
                                 oldPinController.text,
                                 newPinController.text,
                               ),

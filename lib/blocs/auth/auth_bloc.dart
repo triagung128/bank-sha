@@ -71,20 +71,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       if (event is AuthUpdateUser) {
         try {
-          if (state is AuthSuccess) {
-            final updateUser = (state as AuthSuccess).user.copywith(
-                  username: event.data.username,
-                  name: event.data.name,
-                  email: event.data.email,
-                  password: event.data.password,
-                );
+          emit(AuthLoading());
 
-            emit(AuthLoading());
+          await UserService().updateUser(event.data);
 
-            await UserService().updateUser(event.data);
+          final updateUser = event.user.copywith(
+            username: event.data.username,
+            name: event.data.name,
+            email: event.data.email,
+            password: event.data.password,
+          );
 
-            emit(AuthSuccess(updateUser));
-          }
+          emit(AuthSuccess(updateUser));
         } catch (e) {
           emit(AuthFailed(e.toString()));
         }
@@ -92,20 +90,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       if (event is AuthUpdatePin) {
         try {
-          if (state is AuthSuccess) {
-            final updateUser = (state as AuthSuccess).user.copywith(
-                  pin: event.newPin,
-                );
+          emit(AuthLoading());
 
-            emit(AuthLoading());
+          await WalletService().updatePin(
+            event.oldPin,
+            event.newPin,
+          );
 
-            await WalletService().updatePin(
-              event.oldPin,
-              event.newPin,
-            );
+          final updateUser = event.user.copywith(
+            pin: event.newPin,
+          );
 
-            emit(AuthSuccess(updateUser));
-          }
+          emit(AuthSuccess(updateUser));
         } catch (e) {
           emit(AuthFailed(e.toString()));
         }

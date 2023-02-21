@@ -14,9 +14,7 @@ class TransactionService {
       final token = await AuthService().getToken();
 
       final res = await http.post(
-        Uri.parse(
-          '$baseUrl/top_ups',
-        ),
+        Uri.parse('$baseUrl/top_ups'),
         headers: {
           'Authorization': token,
         },
@@ -38,9 +36,7 @@ class TransactionService {
       final token = await AuthService().getToken();
 
       final res = await http.post(
-        Uri.parse(
-          '$baseUrl/transfers',
-        ),
+        Uri.parse('$baseUrl/transfers'),
         headers: {
           'Authorization': token,
         },
@@ -60,9 +56,7 @@ class TransactionService {
       final token = await AuthService().getToken();
 
       final res = await http.post(
-        Uri.parse(
-          '$baseUrl/data_plans',
-        ),
+        Uri.parse('$baseUrl/data_plans'),
         headers: {
           'Authorization': token,
         },

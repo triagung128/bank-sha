@@ -11,9 +11,7 @@ class OperatorCardService {
       final token = await AuthService().getToken();
 
       final res = await http.get(
-        Uri.parse(
-          '$baseUrl/operator_cards',
-        ),
+        Uri.parse('$baseUrl/operator_cards'),
         headers: {
           'Authorization': token,
         },
@@ -25,9 +23,9 @@ class OperatorCardService {
             (operatorCard) => OperatorCardModel.fromJson(operatorCard),
           ),
         ).toList();
+      } else {
+        throw jsonDecode(res.body)['message'];
       }
-
-      throw jsonDecode(res.body)['message'];
     } catch (e) {
       rethrow;
     }

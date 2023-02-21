@@ -31,7 +31,10 @@ class AuthService {
     try {
       final res = await http.post(
         Uri.parse('$baseUrl/register'),
-        body: data.toJson(),
+        body: jsonEncode(data.toJson()),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       );
 
       if (res.statusCode == 200) {

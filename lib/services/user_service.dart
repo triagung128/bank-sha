@@ -32,9 +32,7 @@ class UserService {
       final token = await AuthService().getToken();
 
       final res = await http.get(
-        Uri.parse(
-          '$baseUrl/transfer_histories',
-        ),
+        Uri.parse('$baseUrl/transfer_histories'),
         headers: {
           'Authorization': token,
         },
@@ -59,9 +57,7 @@ class UserService {
       final token = await AuthService().getToken();
 
       final res = await http.get(
-        Uri.parse(
-          '$baseUrl/users/$username',
-        ),
+        Uri.parse('$baseUrl/users/$username'),
         headers: {
           'Authorization': token,
         },

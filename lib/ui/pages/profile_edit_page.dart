@@ -1,5 +1,6 @@
 import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/models/user_edit_form_model.dart';
+import 'package:bank_sha/models/user_model.dart';
 import 'package:bank_sha/shared/shared_methods.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/widgets/buttons.dart';
@@ -8,7 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileEditPage extends StatefulWidget {
-  const ProfileEditPage({super.key});
+  final UserModel user;
+
+  const ProfileEditPage({
+    super.key,
+    required this.user,
+  });
 
   @override
   State<ProfileEditPage> createState() => _ProfileEditPageState();
@@ -24,13 +30,10 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   void initState() {
     super.initState();
 
-    final authState = context.read<AuthBloc>().state;
-    if (authState is AuthSuccess) {
-      usernameController.text = authState.user.username!;
-      nameController.text = authState.user.name!;
-      emailController.text = authState.user.email!;
-      passwordController.text = authState.user.password!;
-    }
+    usernameController.text = widget.user.username!;
+    nameController.text = widget.user.name!;
+    emailController.text = widget.user.email!;
+    passwordController.text = widget.user.password!;
   }
 
   @override
@@ -96,6 +99,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       onPressed: () {
                         context.read<AuthBloc>().add(
                               AuthUpdateUser(
+                                widget.user,
                                 UserEditFormModel(
                                   username: usernameController.text,
                                   name: nameController.text,
