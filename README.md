@@ -1,16 +1,26 @@
-# bank_sha
+# Sha (E-Wallet App)
+Aplikasi E-Wallet (seperti gopay, ovo, dana, dll.). Project ini merupakan studi kasus dari kelas [Build With Angga (BWA)](https://buildwithangga.com/kelas/full-stack-laravel-flutter-build-e-wallet-mobile-apps). State management yang digunakan yaitu bloc.
 
-A new Flutter project.
+![Thumbnail](https://github.com/triagung128/bank-sha/blob/main/images/sneakpeak.png)
 
-## Getting Started
+## Feature Apps
+- Login & Register (Authentication)
+- Top Up
+- Transfer
+- Pulsa & Paket Data
+- Dan Banyak lainnya
 
-This project is a starting point for a Flutter application.
+## State Management
+- Bloc
 
-A few resources to get you started if this is your first Flutter project:
+## Dependencies
+- another_flushbar
+- bloc
+- carousel_slider
+- google_fonts
+- http
+- image picker
+- url_launcher
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Detail Course
+[Full-Stack Laravel Flutter: Build e-Wallet Mobile Apps](https://buildwithangga.com/kelas/full-stack-laravel-flutter-build-e-wallet-mobile-apps)
